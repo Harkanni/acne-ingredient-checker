@@ -106,6 +106,24 @@ const handleSubmit = (e) => {
   const acneIngredient = ingredient.filter(item => regexPattern.some(regex => regex.test(item.trim())))
 
   console.log(acneIngredient);
-  
+
+
+
+   //   DOM MANIPULATION
+   const resultDiv = document.getElementById('result');
+   const title = document.getElementById('title');
+   const content = document.getElementById('content');
+
+   if(acneIngredient.length) {
+      title.innerHTML = 'Unfortunately, there are some pore-clogging ingredients in your product!'
+      for(var i = 0; i < ingredient.length; i++) {
+         if(acneIngredient.includes(ingredient[i])) {
+            content.innerHTML += `<span class='danger'>${ingredient[i]}, </span>`
+         } else {
+            content.innerHTML += `<span>${ingredient[i]}, </span>`
+         }
+      }
+   }
+
   return acneIngredient
 };

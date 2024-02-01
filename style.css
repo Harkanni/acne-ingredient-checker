@@ -1,38 +1,40 @@
 * {
-   font-family: 'adonis-web';
-   padding: 0;
-   margin: 0;
-   box-sizing: border-box;
- }
+  font-family: 'adonis-web';
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
- /* body {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
- } */
+body {
+  line-height: 1.7rem !important;
+}
 
- form {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   width: 100vh;
- }
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vh;
+}
 
-  textarea {
-   outline: none;
-   padding: 1rem;
-   border-radius: 0.5rem;
-   width: 100%;
-   margin-block: 1rem;
- }
+textarea {
+  outline: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  margin-block: 1rem;
+  line-height: 1.7rem;
+}
 
- button {
-   padding: 1rem 2rem;
-   margin-right: 1rem;
- }
+button {
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+}
 
- .result {
-   margin-block: 2rem;
- }
+.danger {
+  color: red;
+}
+
+.result {
+  margin-block: 2rem;
+}
