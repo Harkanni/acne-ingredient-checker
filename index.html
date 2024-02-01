@@ -10,18 +10,20 @@
 </head>
 
 <body>
-   <form action="">
+   <form action="" false>
       <div class="form-group">
          <h1>Check your product</h1>
          <textarea name="ingredientChecker" id="ingredientChecker" placeholder="Enter Composition" cols="60" rows="10">
 
          </textarea>
          <div class="btm-group">
-            <button>Submit</button>
+            <button onclick="handleSubmit(event)">Submit</button>
             <button>Reset</button>
          </div>
       </div>
    </form>
+
+   <script src="./index.js"></script>
 </body>
 
 </html>
