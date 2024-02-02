@@ -94,36 +94,51 @@ const ingredients_db = [
 
 const textarea = document.getElementById('ingredientChecker');
 
+//   DOM MANIPULATION
+const resultDiv = document.getElementById('result');
+const title = document.getElementById('title');
+const content = document.getElementById('content');
+
 const handleSubmit = (e) => {
   e.preventDefault();
 
-  let ingredient = textarea.value.split(',');
+  let ingredients = textarea.value.split(',');
 
-  ingredient = ingredient.map((item) => item.trim());
+  ingredients = ingredients.map((item) => item.trim());
 
-  const regexPattern = ingredients_db.map(item => new RegExp(`\\b${item.trim()}\\b`, 'i'));
+  const regexPattern = ingredients_db.map(
+    (item) => new RegExp(`\\b${item.trim()}\\b`, 'i')
+  );
 
-  const acneIngredient = ingredient.filter(item => regexPattern.some(regex => regex.test(item.trim())))
+  const acneIngredients = ingredients.filter((item) =>
+    regexPattern.some((regex) => regex.test(item.trim()))
+  );
 
-  console.log(acneIngredient);
+  console.log(acneIngredients);
 
+  // Clear previous content
+  content.innerHTML = '';
 
+  // Update UI based on the presence of acne-causing ingredients
+  if (acneIngredients.length) {
+    title.innerHTML =
+      'Unfortunately, there are some pore-clogging ingredients in your product!';
+    ingredients.forEach((ingredient) => {
+      content.innerHTML += `<span class='${
+        acneIngredients.includes(ingredient) ? 'danger' : ''
+      }'>${ingredient}, </span>`;
+    });
+  }
 
-   //   DOM MANIPULATION
-   const resultDiv = document.getElementById('result');
-   const title = document.getElementById('title');
-   const content = document.getElementById('content');
+  return acneIngredients;
+};
 
-   if(acneIngredient.length) {
-      title.innerHTML = 'Unfortunately, there are some pore-clogging ingredients in your product!'
-      for(var i = 0; i < ingredient.length; i++) {
-         if(acneIngredient.includes(ingredient[i])) {
-            content.innerHTML += `<span class='danger'>${ingredient[i]}, </span>`
-         } else {
-            content.innerHTML += `<span>${ingredient[i]}, </span>`
-         }
-      }
-   }
+const handleReset = (e) => {
+  e.preventDefault();
 
-  return acneIngredient
+  textarea.value = '';
+
+  content.innerHTML = '';
+
+  title.innerHTML = '';
 };
